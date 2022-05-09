@@ -45,6 +45,8 @@ const loc3 = document.getElementById ('location3');
 const loc4 = document.getElementById ('location4');
 const loc5 = document.getElementById ('location5');
 const loc6 = document.getElementById ('location6');
+// const locInput = document.querySelectorAll(".formData.location input");
+
 
 // Error 
 const errorName = document.querySelector ('.errorName');
@@ -56,6 +58,7 @@ const errorLieux = document.querySelector(".errorLieux");
 
 
 // verif input
+
 prenom.addEventListener("input", (evt) => { 
   console.log(evt.target.value);
   validateName(evt.target);
@@ -81,10 +84,16 @@ nombreTournois.addEventListener("input", (evt) => {
   validateTournois(evt.target);
 });
 
+
+// loc1.addEventListener('change', () => {
+//     validateLoc();
+//   });
+
+
 // test all input
-// form.addEventListener("input", (evt) => {
+// form.addEventListener("submit", (evt) => {
 //   console.log(evt.target.value);
-//   validateName(evt.target);
+//    validateName(evt.target);
 //   evt.preventDefault();
 // });
 
@@ -153,6 +162,20 @@ function validateTournois(inputValue){
     console.log("nomb2");
   }
 }
+
+// function validateLoc(){
+//   let locationCheck;
+//   const locationChecked = document.querySelector('.formData.location input:checked');
+//   if (locationChecked === null) {
+//     errorLieux.style.display = 'block';
+//     errorLieux.innerHTML = 'Choisir lieux';
+//     console.log ("no check")
+//   } else {
+//     errorLieux.style.display = "none";
+//     locationCheck = true;
+//     console.log("check");
+//   }
+// }
 
 
 function validate(){
