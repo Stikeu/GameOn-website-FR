@@ -10,7 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+const formData = document.querySelectorAll("form");
 const closeBtn = document.querySelector(".close");
 const submitBtn = document.querySelector(".btn-submit");
 
@@ -39,15 +39,15 @@ const nom = document.getElementById ("last");
 const email = document.getElementById("email");
 const anniv = document.getElementById ("birthdate");
 const nombreTournois = document.getElementById("quantity");
-const loc1 = document.getElementById ('location1');
-const loc2 = document.getElementById ('location2');
-const loc3 = document.getElementById ('location3');
-const loc4 = document.getElementById ('location4');
-const loc5 = document.getElementById ('location5');
-const loc6 = document.getElementById ('location6');
-// const locInput = document.querySelectorAll(".formData.location input");
+// const loc1 = document.getElementById ('location1');
+// const loc2 = document.getElementById ('location2');
+// const loc3 = document.getElementById ('location3');
+// const loc4 = document.getElementById ('location4');
+// const loc5 = document.getElementById ('location5');
+// const loc6 = document.getElementById ('location6');
+const locInput = document.querySelectorAll('input[name="location"]');
 
-
+console.log(locInput);
 // Error 
 const errorName = document.querySelector ('.errorName');
 const errorSecName = document.querySelector(".errorSecName");
@@ -85,9 +85,15 @@ nombreTournois.addEventListener("input", (evt) => {
 });
 
 
-// loc1.addEventListener('change', () => {
+
+
+
+
+// locInput.addEventListener('input', (evt) => {
+//     console.log(locInput);
+//     console.log(evt.target.value);
 //     validateLoc();
-//   });
+// });
 
 
 // test all input
@@ -163,25 +169,64 @@ function validateTournois(inputValue){
   }
 }
 
-// function validateLoc(){
-//   let locationCheck;
-//   const locationChecked = document.querySelector('.formData.location input:checked');
-//   if (locationChecked === null) {
-//     errorLieux.style.display = 'block';
-//     errorLieux.innerHTML = 'Choisir lieux';
-//     console.log ("no check")
-//   } else {
-//     errorLieux.style.display = "none";
-//     locationCheck = true;
-//     console.log("check");
-//   }
-// }
+function validateLoc(evt){
+  console.log(evt.target.value);
+  console.log(evt.target.checked);
+  let locationCheck;
+  if (evt === false) {
+    errorLieux.style.display = 'block';
+    errorLieux.innerHTML = 'Choisir lieux';
+    console.log ("no check");
+  } else if(evt.target.checked) {
+    errorLieux.style.display = "none";
+    locationCheck = true;
+    console.log("check");
+  }
+}
 
+console.log(formData);
 
 function validate(){
-  submitBtn.addEventListener("submit", (evt) =>{
+  // if (prenomCheck === true && nomCheck === true && emailCheck === true && dateCheck === true && tournoisCheck === true) {
+  //   alert("Formulaire envoyé");
+  //   modalbg.style.display = "none";
+  // } else {
+  //   modalbg.style.display = "block";
+  // }
+submitBtn.addEventListener("click", (evt) =>{ 
+  console.log(evt)
+  evt.preventDefault();
+  prenom.addEventListener("input", (evt) => { 
+    console.log(evt.target.value);
+    validateName(evt.target);
+  });
   
-  })
+  nom.addEventListener("input", (evt) => { 
+    console.log(evt.target.value);
+    validateSecondName(evt.target);
+  });
+  
+  email.addEventListener("input", (evt) => { 
+    console.log(evt.target.value);
+    validateEmail(evt.target);
+  });
+  
+  anniv.addEventListener("input", (evt) => { 
+    console.log(evt.target.value);
+    validateDate(evt.target);
+  });
+  
+  nombreTournois.addEventListener("input", (evt) => { 
+    console.log(evt.target.value);
+    validateTournois(evt.target);
+  });
+  
+  locInput.forEach((radio) => { console.log(radio);
+    radio.addEventListener("input", (evt) => {(validateLoc(evt))
+      console.log(evt);
+    });
+    });
+})
 }
 
 
