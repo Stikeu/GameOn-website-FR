@@ -53,16 +53,14 @@ img {
   font-family: Roboto, sans-serif;
 }
 
+.topnav a.active,
 .topnav a:hover {
-  background-color: #ff0000;
+  background-color: #fE142F;
   color: #ffffff;
-  border-radius: 15px;
-}
-
-.topnav a.active {
-  background-color: #ff0000;
-  color: #ffffff;
-  border-radius: 15px;
+  border-radius: 8px;
+  -webkit-text-decoration: underline white 1px;
+  text-decoration: underline white 1px;
+  text-underline-offset: 5px;
 }
 
 .buttonRespon{
@@ -73,24 +71,79 @@ img {
   display: none;
 }
 
+
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav.responsive .main-navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 240px;
+    width: 100vw;
+    max-width: 425px;
+    background-color: white;
+    float: unset;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: #fE142F outset 5px;
+    border-radius: 8px;
+    -webkit-animation-name: navbar-open;
+    animation-name: navbar-open;
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+  }
+
+  .topnav {
+    display: block;
+    margin: 20px 0;
+    padding: 0;
+  }
+
+  .topnav a {
+    display: none;
+    background-color: transparent;
+    color: #232323;
+    -webkit-animation-name: modalopen;
+    animation-name: modalopen;
+    -webkit-animation-duration: var(--modal-duration);
+    animation-duration: var(--modal-duration);
+    padding: 12px 20px;
+  }
+
+  .topnav a:hover {
+    background-color: transparent;
+    color: #00000094;
+  }
+
+  .topnav a.active {
+    background-color: transparent;
+    color: #fE142F;
+  }
+
   .topnav a.icon {
+    color: #fE142F;
+    font-size: 23px;
     float: right;
     display: block;
   }
-}
 
-@media screen and (max-width: 768px) {
+  .topnav a:last-of-type {
+    -webkit-animation: none;
+    animation: none;
+  }
+
   .topnav.responsive {
     position: relative;
-    padding-right: 20px;
   }
+
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
+
   }
+
   .topnav.responsive a {
     float: none;
     display: block;
@@ -313,6 +366,36 @@ input[data-error]::after {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
+}
+#confirmation {
+  height: 754px;
+  width: 66%;
+  margin: auto;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#confirmation h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+#confirmation .btn-close {
+  position: absolute;
+  bottom: 20px;
+  left : 32%;
+}
+.btn-close {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
 }
 .close:before,
 .close:after {
