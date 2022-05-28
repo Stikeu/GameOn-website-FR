@@ -104,6 +104,7 @@ function validateName(inputValue) {
     errorName.style.color = "red";
     errorName.style.fontSize = '0.8rem';
     prenom.style.border = 'solid red 2px';
+    prenomCheck = false;
   } else {
     errorName.style.display = "none";
     prenom.style.border = 'none';
@@ -119,6 +120,7 @@ function validateSecondName(inputValue) {
     errorSecName.style.color = "red";
     errorSecName.style.fontSize = '0.8rem';
     nom.style.border = 'solid red 2px';
+    nomCheck = false;
   } else {
     errorSecName.style.display = "none";
     nom.style.border = "none"
@@ -134,6 +136,7 @@ function validateEmail(inputValue) {
     errorEmail.style.color = "red";
     errorEmail.style.fontSize = '0.8rem';
     email.style.border = 'solid red 2px';
+    emailCheck = false;
   } else {
     errorEmail.style.display = "none";
     email.style.border = 'none';
@@ -149,6 +152,7 @@ function validateDate(inputValue) {
     errorDate.style.color = "red";
     errorDate.style.fontSize = '0.8rem';
     anniv.style.border = 'solid red 2px';
+    dateCheck = false;
   } else {
     errorDate.style.display = "none";
     anniv.style.border = "none";
@@ -163,6 +167,7 @@ function validateTournois(inputValue) {
     errorQuantity.style.color = "red";
     errorQuantity.style.fontSize = '0.8rem';
     nombreTournois.style.border = 'solid red 2px';
+    tournoisCheck = false;
   } else {
     errorQuantity.style.display = "none";
     nombreTournois.style.border = "none";
@@ -176,6 +181,7 @@ function validateLoc(evt) {
     errorLieux.innerHTML = 'Veuillez choisir un lieux.';
     errorLieux.style.color = "red";
     errorLieux.style.fontSize = '0.8rem';
+    locationCheck = false;
   } else if (evt.target.checked) {
     errorLieux.style.display = "none";
     locationCheck = true;
@@ -190,6 +196,7 @@ function validateCondition(evt) {
     errorValidation.innerText = "Vous devez vérifier que vous acceptez conditions d'utilisation";
     errorValidation.style.color = 'red';
     errorValidation.style.fontSize = '0.8rem';
+    conditionsChecked = false;
   }
 }
 
