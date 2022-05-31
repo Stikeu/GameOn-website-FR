@@ -255,6 +255,13 @@ submitBtn.addEventListener("click", (evt) => {
   if (prenomCheck === true && nomCheck === true && emailCheck === true && dateCheck === true && tournoisCheck === true && locationCheck === true && conditionsChecked === true) {
     form.style.display = "none";
     confirmation.style.display = "flex";
+    prenom.value="";
+    nom.value="";
+    errorSecName.style.display = "none";
+    nom.style.border = "none"
+    email.value="";
+    anniv.value="";
+    nombreTournois.value="";
   }
 })
 // close modal confirmation
@@ -265,14 +272,6 @@ modalBtn.forEach( (btn) => btn.addEventListener ("click", (evt) => {
   console.log("test")
   form.style.display = 'block';
   confirmation.style.display = 'none';
-  prenom.value="";
-
-  nom.value="";
-  errorSecName.style.display = "none";
-  nom.style.border = "none"
-  email.value="";
-  anniv.value="";
-  nombreTournois.value="";
   // locInput.click();
 })
 )
