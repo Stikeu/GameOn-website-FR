@@ -87,7 +87,6 @@ locInput.forEach((radio) => {
   radio.addEventListener("input", (evt) => {
     lieuCheck = true;
     (validateLoc(evt))
-    console.log(evt);
   });
 });
   validation.addEventListener("input", (evt) => {
@@ -108,12 +107,10 @@ function validateName(inputValue) {
     errorName.style.fontSize = '0.8rem';
     prenom.style.border = 'solid red 2px';
     prenomCheck = false;
-    console.log(prenomCheck);
   } else {
     errorName.style.display = "none";
     prenom.style.border = 'none';
     prenomCheck = true;
-    console.log(prenomCheck);
   }
 }
 
@@ -190,7 +187,6 @@ function validateLoc(evt) {
   } else if (evt.target.checked) {
     errorLieux.style.display = "none";
     locationCheck = true;
-    console.log("bibit")
   }
 }
 
@@ -208,7 +204,6 @@ function validateCondition(evt) {
 
 function checkReset() {
   document.getElementById("test").style.opacity = "1";
-  console.log("bit")
 }
 
 submitBtn.addEventListener("click", (evt) => {
@@ -236,7 +231,6 @@ submitBtn.addEventListener("click", (evt) => {
   locInput.forEach((radio) => {
     radio.addEventListener("input", (evt) => {
       (validateLoc(evt))
-      console.log(evt);
     });
   });
 
@@ -255,7 +249,6 @@ submitBtn.addEventListener("click", (evt) => {
   validateTournois(nombreTournois);
   locInput.forEach((radio) => 
     {
-    console.log("testInput")
      validateLoc(evt)
     }
   );
