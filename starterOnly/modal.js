@@ -52,11 +52,20 @@ const errorQuantity = document.querySelector(".errorQuantity");
 const errorLieux = document.querySelector(".errorLieux");
 const errorValidation = document.querySelector('.errorValidation');
 
+let prenomCheck;
+let nomCheck;
+let emailCheck;
+let dateCheck;
+let tournoisCheck;
+let locationCheck;
+let conditionsChecked;
+let lieuCheck = false;
 // verif input
 
 prenom.addEventListener("input", (evt) => {
-  validateName(evt.target);
+  validateName(evt.target)
 });
+
 
 nom.addEventListener("input", (evt) => {
   validateSecondName(evt.target);
@@ -73,23 +82,17 @@ anniv.addEventListener("input", (evt) => {
 nombreTournois.addEventListener("input", (evt) => {
   validateTournois(evt.target);
 });
+
 locInput.forEach((radio) => {
   radio.addEventListener("input", (evt) => {
+    lieuCheck = true;
     (validateLoc(evt))
+    console.log(evt);
   });
 });
   validation.addEventListener("input", (evt) => {
     (validateCondition(evt))
   });
-
-let prenomCheck;
-let nomCheck;
-let emailCheck;
-let dateCheck;
-let tournoisCheck;
-let locationCheck;
-let conditionsChecked;
-
 
 
 
@@ -105,15 +108,17 @@ function validateName(inputValue) {
     errorName.style.fontSize = '0.8rem';
     prenom.style.border = 'solid red 2px';
     prenomCheck = false;
+    console.log(prenomCheck);
   } else {
     errorName.style.display = "none";
     prenom.style.border = 'none';
     prenomCheck = true;
+    console.log(prenomCheck);
   }
 }
 
 function validateSecondName(inputValue) {
-
+  
   if (!inputValue.value.match(/^[A-Za-z]+$/) || inputValue.value === " " || inputValue.value.length < 2) {
     errorSecName.style.display = "block";
     errorSecName.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
@@ -176,7 +181,7 @@ function validateTournois(inputValue) {
 }
 
 function validateLoc(evt) {
-  if (evt === false) {
+  if (lieuCheck === false) {
     errorLieux.style.display = 'block';
     errorLieux.innerHTML = 'Veuillez choisir un lieux.';
     errorLieux.style.color = "red";
@@ -185,6 +190,7 @@ function validateLoc(evt) {
   } else if (evt.target.checked) {
     errorLieux.style.display = "none";
     locationCheck = true;
+    console.log("bibit")
   }
 }
 
@@ -200,6 +206,11 @@ function validateCondition(evt) {
   }
 }
 
+function checkReset() {
+  document.getElementById("test").style.opacity = "1";
+  console.log("bit")
+}
+
 submitBtn.addEventListener("click", (evt) => {
   evt.preventDefault();
   prenom.addEventListener("input", (evt) => {
@@ -207,7 +218,7 @@ submitBtn.addEventListener("click", (evt) => {
   });
 
   nom.addEventListener("input", (evt) => {
-    validateSecondName(evt.target);
+    validateName(evt.target);
   });
 
   email.addEventListener("input", (evt) => {
@@ -225,6 +236,7 @@ submitBtn.addEventListener("click", (evt) => {
   locInput.forEach((radio) => {
     radio.addEventListener("input", (evt) => {
       (validateLoc(evt))
+      console.log(evt);
     });
   });
 
@@ -234,19 +246,19 @@ submitBtn.addEventListener("click", (evt) => {
 })
 
 submitBtn.addEventListener("click", (evt) => {
+  evt.preventDefault();
   (validateCondition(evt));
-  validateName(evt.target);
-  validateSecondName(evt.target);
-  validateEmail(evt.target);
-  validateDate(evt.target);
-  validateTournois(evt.target);
+  validateName(prenom);
+  validateSecondName(nom);
+  validateEmail(email);
+  validateDate(anniv);
+  validateTournois(nombreTournois);
   locInput.forEach((radio) => 
     {
-      console.log("testInput")
-     validateLoc(evt = false)
+    console.log("testInput")
+     validateLoc(evt)
     }
   );
-  validateCondition(evt);
   if (prenomCheck === true && nomCheck === true && emailCheck === true && dateCheck === true && tournoisCheck === true && locationCheck === true && conditionsChecked === true) {
     form.style.display = "none";
     confirmation.style.display = "flex";
@@ -261,5 +273,13 @@ modalBtn.forEach( (btn) => btn.addEventListener ("click", (evt) => {
   form.style.display = 'block';
   confirmation.style.display = 'none';
   prenom.value="";
+
+  nom.value="";
+  errorSecName.style.display = "none";
+  nom.style.border = "none"
+  email.value="";
+  anniv.value="";
+  nombreTournois.value="";
+  // locInput.click();
 })
 )
