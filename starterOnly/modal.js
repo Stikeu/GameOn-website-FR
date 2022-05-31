@@ -98,7 +98,7 @@ let conditionsChecked;
 
 function validateName(inputValue) {
 
-  if (!inputValue.value.match(/^[A-Za-z]+$/) || inputValue.value === " " || inputValue.value.length < 2) {
+  if (!inputValue.value.match(/^[a-zA-Z\-]{2,}$/) || inputValue.value === " " || inputValue.value.length < 2) {
     errorName.style.display = "block";
     errorName.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du Prénom.";
     errorName.style.color = "red";
@@ -189,7 +189,7 @@ function validateLoc(evt) {
 }
 
 function validateCondition(evt) {
-  if (validation.checked === true || evt.target.checked) {;
+  if (validation.checked === true || evt.target.checked) {
     conditionsChecked = true;
     errorValidation.style.display = 'none';
   }else if (!validation.checked === true ){
@@ -235,15 +235,31 @@ submitBtn.addEventListener("click", (evt) => {
 
 submitBtn.addEventListener("click", (evt) => {
   (validateCondition(evt));
+  validateName(evt.target);
+  validateSecondName(evt.target);
+  validateEmail(evt.target);
+  validateDate(evt.target);
+  validateTournois(evt.target);
+  locInput.forEach((radio) => 
+    {
+      console.log("testInput")
+     validateLoc(evt = false)
+    }
+  );
+  validateCondition(evt);
   if (prenomCheck === true && nomCheck === true && emailCheck === true && dateCheck === true && tournoisCheck === true && locationCheck === true && conditionsChecked === true) {
     form.style.display = "none";
     confirmation.style.display = "flex";
-  } else {
-    
   }
-
 })
 // close modal confirmation
 confirmationCloseBtn[0].addEventListener("click", closeModal);
 
-// }
+//
+modalBtn.forEach( (btn) => btn.addEventListener ("click", (evt) => {
+  console.log("test")
+  form.style.display = 'block';
+  confirmation.style.display = 'none';
+  prenom.value="";
+})
+)
