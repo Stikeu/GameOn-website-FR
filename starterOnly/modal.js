@@ -100,7 +100,7 @@ locInput.forEach((radio) => {
 
 function validateName(inputValue) {
 
-  if (!inputValue.value.match(/^[a-zA-Z\-]{2,}$/) || inputValue.value === " " || inputValue.value.length < 2) {
+  if (!inputValue.value.match(/^[a-zA-Z].*[\s\.]*$/) || inputValue.value === " " || inputValue.value.length < 2) {
     errorName.style.display = "block";
     errorName.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du Prénom.";
     errorName.style.color = "red";
@@ -116,7 +116,7 @@ function validateName(inputValue) {
 
 function validateSecondName(inputValue) {
   
-  if (!inputValue.value.match(/^[A-Za-z]+$/) || inputValue.value === " " || inputValue.value.length < 2) {
+  if (!inputValue.value.match(/^[a-zA-Z].*[\s\.]*$/) || inputValue.value === " " || inputValue.value.length < 2) {
     errorSecName.style.display = "block";
     errorSecName.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     errorSecName.style.color = "red";
@@ -195,6 +195,7 @@ function validateCondition(evt) {
     conditionsChecked = true;
     errorValidation.style.display = 'none';
   }else if (!validation.checked === true ){
+    errorValidation.style.display = "block";
     errorValidation.innerText = "Vous devez vérifier que vous acceptez conditions d'utilisation";
     errorValidation.style.color = 'red';
     errorValidation.style.fontSize = '0.8rem';
@@ -213,7 +214,7 @@ submitBtn.addEventListener("click", (evt) => {
   });
 
   nom.addEventListener("input", (evt) => {
-    validateName(evt.target);
+    validateSecondName(evt.target);
   });
 
   email.addEventListener("input", (evt) => {
@@ -255,13 +256,7 @@ submitBtn.addEventListener("click", (evt) => {
   if (prenomCheck === true && nomCheck === true && emailCheck === true && dateCheck === true && tournoisCheck === true && locationCheck === true && conditionsChecked === true) {
     form.style.display = "none";
     confirmation.style.display = "flex";
-    prenom.value="";
-    nom.value="";
-    errorSecName.style.display = "none";
-    nom.style.border = "none"
-    email.value="";
-    anniv.value="";
-    nombreTournois.value="";
+    form.reset();
   }
 })
 // close modal confirmation
@@ -269,9 +264,7 @@ confirmationCloseBtn[0].addEventListener("click", closeModal);
 
 //
 modalBtn.forEach( (btn) => btn.addEventListener ("click", (evt) => {
-  console.log("test")
   form.style.display = 'block';
   confirmation.style.display = 'none';
-  // locInput.click();
 })
 )
