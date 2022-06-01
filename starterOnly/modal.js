@@ -100,7 +100,7 @@ locInput.forEach((radio) => {
 
 function validateName(inputValue) {
 
-  if (!inputValue.value.match(/^[a-zA-Z].*[\s\.]*$/) || inputValue.value === " " || inputValue.value.length < 2) {
+  if (!inputValue.value.match(/^[a-zA-Z\s]{2,}$/) || inputValue.value === " " || inputValue.value.length < 2) {
     errorName.style.display = "block";
     errorName.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du Prénom.";
     errorName.style.color = "red";
@@ -116,7 +116,7 @@ function validateName(inputValue) {
 
 function validateSecondName(inputValue) {
   
-  if (!inputValue.value.match(/^[a-zA-Z].*[\s\.]*$/) || inputValue.value === " " || inputValue.value.length < 2) {
+  if (!inputValue.value.match(/^[a-zA-Z\s]{2,}$/) || inputValue.value === " " || inputValue.value.length < 2) {
     errorSecName.style.display = "block";
     errorSecName.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     errorSecName.style.color = "red";
