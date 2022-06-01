@@ -256,6 +256,7 @@ submitBtn.addEventListener("click", (evt) => {
   if (prenomCheck === true && nomCheck === true && emailCheck === true && dateCheck === true && tournoisCheck === true && locationCheck === true && conditionsChecked === true) {
     form.style.display = "none";
     confirmation.style.display = "flex";
+    locationCheck === false;
     form.reset();
   }
 })
